@@ -150,6 +150,15 @@ local plugins = {
       require("symbol-usage").setup()
     end,
   },
+  {
+    "TabbyML/vim-tabby",
+    lazy = false,
+    config = function()
+      vim.g.tabby_trigger_mode = "manual"
+      -- vim.g.tabby_keybinding_accept = "<Tab>"
+      -- vim.g.tabby_keybinding_trigger_or_dismiss = "<C-\\>"
+    end,
+  },
 }
 
 return plugins
