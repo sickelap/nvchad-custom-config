@@ -17,10 +17,23 @@ local plugins = {
     "williamboman/mason.nvim",
     opts = {
       ensure_installed = {
+        -- language servers
+        "lua-language-server",
         "rust-analyzer",
-        "eslint",
-        "lua_ls",
         "python-lsp-server",
+        "typescript-language-server",
+        "ansible-language-server",
+        "gopls",
+        "yaml-language-server",
+
+        -- linters
+        "eslint_d",
+        "ansible-lint",
+
+        -- formatters
+        "black",
+        "isort",
+        "prettier",
       },
     },
   },
