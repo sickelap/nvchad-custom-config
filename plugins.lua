@@ -159,6 +159,10 @@ local plugins = {
       -- vim.g.tabby_keybinding_trigger_or_dismiss = "<C-\\>"
     end,
   },
+  {
+    "christoomey/vim-tmux-navigator",
+    lazy = false,
+  }
 }
 
 return plugins
