@@ -43,4 +43,5 @@ M.tmuxnavigator = {
     ["<c-l>"] = { "<cmd>TmuxNavigateRight<cr>" },
   }
 }
+
 return M
