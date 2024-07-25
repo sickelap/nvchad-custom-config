@@ -44,4 +44,10 @@ M.tmuxnavigator = {
   }
 }
 
+M.neotest = {
+  n = {
+    ["<leader>tt"] = { "<cmd>Neotest run<cr>" },
+  }
+}
+
 return M

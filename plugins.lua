@@ -25,7 +25,8 @@ local plugins = {
         "ansible-language-server",
         "gopls",
         "yaml-language-server",
-        "docker-compose-language-server",
+        -- "docker-compose-language-server",
+        "json-lsp",
 
         -- linters
         "eslint_d",
@@ -56,15 +57,15 @@ local plugins = {
       require("rust-tools").setup(opts)
     end,
   },
-  {
-    dir = "Saecki/crates.nvim",
-    ft = { "rust", "toml" },
-    config = function(_, opts)
-      local crates = require "crates"
-      crates.setup(opts)
-      crates.show()
-    end,
-  },
+  -- {
+  --   dir = "Saecki/crates.nvim",
+  --   ft = { "rust", "toml" },
+  --   config = function(_, opts)
+  --     local crates = require "crates"
+  --     crates.setup(opts)
+  --     crates.show()
+  --   end,
+  -- },
   {
     "hrsh7th/nvim-cmp",
     opts = function()
@@ -128,6 +129,10 @@ local plugins = {
       local conform = require "conform"
       conform.setup {
         formatters_by_ft = {
+          typescript = { "prettier", "eslint_d" },
+          typescriptreact = { "prettier", "eslint_d" },
+          javascript = { "prettier", "eslint_d" },
+          javascriptreact = { "prettier", "eslint_d" },
           lua = { "stylua" },
           python = { { "black", "isort" } },
           html = { "htmlbeautifier" },
@@ -200,7 +205,20 @@ local plugins = {
         desc = "Quickfix List (Trouble)",
       },
     }
-  }
+  },
+  {
+    "nvim-neotest/neotest",
+    dependencies = {
+      "nvim-neotest/nvim-nio",
+      "nvim-lua/plenary.nvim",
+      "antoinemadec/FixCursorHold.nvim",
+      "nvim-treesitter/nvim-treesitter",
+
+      -- runners
+      "haydenmeade/neotest-jest",
+      "nvim-neotest/neotest-python",
+    }
+  },
 }
 
 return plugins
