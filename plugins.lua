@@ -18,21 +18,35 @@ local plugins = {
     opts = {
       ensure_installed = {
         -- language servers
-        "lua-language-server",
-        "rust-analyzer",
-        "python-lsp-server",
-        "typescript-language-server",
         "ansible-language-server",
+        "bash-language-server",
+        "css-lsp",
+        "dockerfile-language-server",
+        "emmet-ls",
+        "eslint-lsp",
         "gopls",
-        "yaml-language-server",
-        -- "docker-compose-language-server",
+        "html-lsp",
         "json-lsp",
+        "lua-language-server",
+        "python-lsp-server",
+        "rust-analyzer",
+        "terraform-ls",
+        "typescript-language-server",
+        "yaml-language-server",
+        "ltex-ls",
+        "jinja-lsp",
 
         -- linters
+        "stylua",
         "eslint_d",
         "ansible-lint",
+        "tflint",
+        "pyright",
+        "shellcheck",
+        "flake8",
 
         -- formatters
+        "shfmt",
         "black",
         "isort",
         "prettier",
@@ -57,15 +71,15 @@ local plugins = {
       require("rust-tools").setup(opts)
     end,
   },
-  -- {
-  --   dir = "Saecki/crates.nvim",
-  --   ft = { "rust", "toml" },
-  --   config = function(_, opts)
-  --     local crates = require "crates"
-  --     crates.setup(opts)
-  --     crates.show()
-  --   end,
-  -- },
+  {
+    dir = "Saecki/crates.nvim",
+    ft = { "rust", "toml" },
+    config = function(_, opts)
+      local crates = require "crates"
+      crates.setup(opts)
+      crates.show()
+    end,
+  },
   {
     "hrsh7th/nvim-cmp",
     opts = function()
@@ -99,7 +113,7 @@ local plugins = {
   },
   {
     "mfussenegger/nvim-lint",
-    ft = { "javascript", "typescript", "typescriptreact", "javascriptreact" },
+    ft = { "javascript", "typescript", "typescriptreact", "javascriptreact", "terraform" },
     config = function()
       vim.api.nvim_create_autocmd({ "BufWritePost" }, {
         callback = function()
@@ -134,13 +148,14 @@ local plugins = {
           javascript = { "prettier", "eslint_d" },
           javascriptreact = { "prettier", "eslint_d" },
           lua = { "stylua" },
-          python = { { "black", "isort" } },
+          python = { "black", "isort", "flake8" },
           html = { "htmlbeautifier" },
           bash = { "beautysh" },
           proto = { "buf" },
           rust = { "rustfmt" },
           yaml = { "yamlfix" },
           toml = { "taplo" },
+          terraform = { "tflint" },
         },
         format_on_save = {
           timeout_ms = 500,
@@ -204,7 +219,7 @@ local plugins = {
         "<cmd>Trouble qflist toggle<cr>",
         desc = "Quickfix List (Trouble)",
       },
-    }
+    },
   },
   {
     "nvim-neotest/neotest",
@@ -217,7 +232,7 @@ local plugins = {
       -- runners
       "haydenmeade/neotest-jest",
       "nvim-neotest/neotest-python",
-    }
+    },
   },
 }
 

@@ -41,13 +41,22 @@ M.tmuxnavigator = {
     ["<c-j>"] = { "<cmd>TmuxNavigateDown<cr>" },
     ["<c-k>"] = { "<cmd>TmuxNavigateUp<cr>" },
     ["<c-l>"] = { "<cmd>TmuxNavigateRight<cr>" },
-  }
+  },
 }
 
 M.neotest = {
   n = {
     ["<leader>tt"] = { "<cmd>Neotest run<cr>" },
-  }
+  },
+}
+
+M.git = {
+  n = {
+    ["<leader>gB"] = { "<cmd>Git blame<cr>", "Blame buffer" },
+    ["<leader>gr"] = { "<cmd>Git reset_hunk<cr>", "Reset hunk" },
+    ["<leader>gR"] = { "<cmd>Git reset_buffer<cr>", "Reset buffer" },
+    ["<leader>gd"] = { "<cmd>Git preview_hunk_inline<cr>", "Show hunk" },
+  },
 }
 
 return M
