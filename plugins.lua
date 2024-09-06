@@ -88,8 +88,10 @@ local plugins = {
       return M
     end,
   },
+  { "MunifTanjim/nui.nvim" },
   {
     "vuki656/package-info.nvim",
+    requires = "MunifTanjim/nui.nvim",
     ft = "json.packagejson",
     config = function()
       local info = require "package-info"

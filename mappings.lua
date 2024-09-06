@@ -59,4 +59,10 @@ M.git = {
   },
 }
 
+M.packageinfo = {
+  n = {
+    ["<leader>pv"] = { "<cmd>lua require('package-info').change_version()<cr>", "Change package version" },
+  },
+}
+
 return M
