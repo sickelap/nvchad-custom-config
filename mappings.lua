@@ -32,6 +32,14 @@ M.finder = {
       end,
       "Find config files",
     },
+    ["<leader>fg"] = {
+      function()
+        require("telescope.builtin").git_files {
+          prompt_title = "Find Git Files",
+        }
+      end,
+      "Find Git files",
+    },
   },
 }
 
@@ -56,6 +64,8 @@ M.git = {
     ["<leader>gr"] = { "<cmd>Git reset_hunk<cr>", "Reset hunk" },
     ["<leader>gR"] = { "<cmd>Git reset_buffer<cr>", "Reset buffer" },
     ["<leader>gd"] = { "<cmd>Git preview_hunk_inline<cr>", "Show hunk" },
+    ["<leader>gs"] = { "<cmd>Git stage_hunk<cr>", "Stage hunk" },
+    ["<leader>gS"] = { "<cmd>Git stage_buffer<cr>", "Stage buffer" },
   },
 }
 

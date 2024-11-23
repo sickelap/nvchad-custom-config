@@ -35,6 +35,7 @@ local plugins = {
         "yaml-language-server",
         "ltex-ls",
         "jinja-lsp",
+        "sqlls",
 
         -- linters
         "stylua",
@@ -71,15 +72,15 @@ local plugins = {
       require("rust-tools").setup(opts)
     end,
   },
-  {
-    dir = "Saecki/crates.nvim",
-    ft = { "rust", "toml" },
-    config = function(_, opts)
-      local crates = require "crates"
-      crates.setup(opts)
-      crates.show()
-    end,
-  },
+  -- {
+  --   dir = "Saecki/crates.nvim",
+  --   ft = { "rust", "toml" },
+  --   config = function(_, opts)
+  --     local crates = require "crates"
+  --     crates.setup(opts)
+  --     crates.show()
+  --   end,
+  -- },
   {
     "hrsh7th/nvim-cmp",
     opts = function()
@@ -160,7 +161,6 @@ local plugins = {
           terraform = { "tflint" },
         },
         format_on_save = {
-          timeout_ms = 500,
           lsp_fallback = true,
         },
       }
@@ -225,6 +225,7 @@ local plugins = {
   },
   {
     "nvim-neotest/neotest",
+    ft = { "rust" },
     dependencies = {
       "nvim-neotest/nvim-nio",
       "nvim-lua/plenary.nvim",
@@ -234,7 +235,26 @@ local plugins = {
       -- runners
       "haydenmeade/neotest-jest",
       "nvim-neotest/neotest-python",
+      "rouge8/neotest-rust",
     },
+  },
+  {
+    "kevinhwang91/nvim-hlslens",
+    lazy = false,
+    config = function()
+      require("hlslens").setup()
+    end,
+  },
+  {
+    "petertriho/nvim-scrollbar",
+    lazy = false,
+    dependencies = {
+      "kevinhwang91/nvim-hlslens",
+      "lewis6991/gitsigns.nvim",
+    },
+    config = function()
+      require("scrollbar").setup()
+    end,
   },
 }
 
