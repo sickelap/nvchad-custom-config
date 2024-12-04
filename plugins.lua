@@ -33,9 +33,8 @@ local plugins = {
         "terraform-ls",
         "typescript-language-server",
         "yaml-language-server",
-        "ltex-ls",
+        -- "ltex-ls",
         "jinja-lsp",
-        "sqlls",
 
         -- linters
         "stylua",
@@ -72,15 +71,15 @@ local plugins = {
       require("rust-tools").setup(opts)
     end,
   },
-  -- {
-  --   dir = "Saecki/crates.nvim",
-  --   ft = { "rust", "toml" },
-  --   config = function(_, opts)
-  --     local crates = require "crates"
-  --     crates.setup(opts)
-  --     crates.show()
-  --   end,
-  -- },
+  {
+    dir = "Saecki/crates.nvim",
+    ft = { "rust", "toml" },
+    config = function(_, opts)
+      local crates = require "crates"
+      crates.setup(opts)
+      crates.show()
+    end,
+  },
   {
     "hrsh7th/nvim-cmp",
     opts = function()
@@ -161,6 +160,7 @@ local plugins = {
           terraform = { "tflint" },
         },
         format_on_save = {
+          -- timeout_ms = 500,
           lsp_fallback = true,
         },
       }
@@ -171,15 +171,6 @@ local plugins = {
     event = "BufReadPre",
     config = function()
       require("symbol-usage").setup()
-    end,
-  },
-  {
-    "TabbyML/vim-tabby",
-    lazy = false,
-    config = function()
-      vim.g.tabby_trigger_mode = "manual"
-      -- vim.g.tabby_keybinding_accept = "<Tab>"
-      -- vim.g.tabby_keybinding_trigger_or_dismiss = "<C-\\>"
     end,
   },
   {
@@ -225,7 +216,6 @@ local plugins = {
   },
   {
     "nvim-neotest/neotest",
-    ft = { "rust" },
     dependencies = {
       "nvim-neotest/nvim-nio",
       "nvim-lua/plenary.nvim",
@@ -235,25 +225,24 @@ local plugins = {
       -- runners
       "haydenmeade/neotest-jest",
       "nvim-neotest/neotest-python",
-      "rouge8/neotest-rust",
     },
   },
   {
-    "kevinhwang91/nvim-hlslens",
-    lazy = false,
-    config = function()
-      require("hlslens").setup()
-    end,
-  },
-  {
-    "petertriho/nvim-scrollbar",
-    lazy = false,
+    "nvim-telescope/telescope-live-grep-args.nvim",
     dependencies = {
-      "kevinhwang91/nvim-hlslens",
-      "lewis6991/gitsigns.nvim",
+      "nvim-telescope/telescope.nvim",
     },
-    config = function()
-      require("scrollbar").setup()
+    setup = function()
+      local telescope = require "telescope"
+      telescope.setup {
+        extensions = {
+          live_grep_args = {
+            noremap = true,
+            auto_quoting = true,
+          },
+        },
+      }
+      telescope.load_extension "live_grep_args"
     end,
   },
 }

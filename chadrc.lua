@@ -18,4 +18,8 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 --   end
 -- })
 
+vim.api.nvim_set_hl(0, "Visual", { bg = "#4c566a" })
+-- vim.api.nvim_set_hl(0, "Normal", { bg = "NONE", ctermfg = "NONE" })
+vim.api.nvim_set_hl(0, "FloatBorder", { bg = "NONE", ctermfg = "NONE" })
+
 return M

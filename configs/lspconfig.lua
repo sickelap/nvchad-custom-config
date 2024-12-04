@@ -16,7 +16,7 @@ local servers = {
   "pyright",
   "terraformls",
   "ts_ls",
-  "ltex",
+  -- "ltex",
   "jinja_lsp",
   "cssls",
   "html",
@@ -30,12 +30,3 @@ for _, lsp in ipairs(servers) do
     capabilities = capabilities,
   }
 end
-
-lspconfig.sqlls.setup {
-  on_init = on_init,
-  on_attach = on_attach,
-  capabilities = capabilities,
-  filetypes = { "sql", "mysql", "postgres" },
-  root_dir = lspconfig.util.root_pattern ".git",
-  settings = {},
-}
