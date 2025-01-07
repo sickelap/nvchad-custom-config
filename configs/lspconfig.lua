@@ -9,6 +9,7 @@ local lspconfig = require "lspconfig"
 local servers = {
   "ansiblels",
   "bashls",
+  "cucumber_language_server",
   "yamlls",
   "dockerls",
   "docker_compose_language_service",

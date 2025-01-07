@@ -21,4 +21,19 @@ return {
       },
     },
   },
+  setup = function()
+    require("codecompanion").setup {
+      adapters = {
+        ollama = function()
+          return require("codecompanion.adapters").extend("ollama", {
+            schema = {
+              model = {
+                default = "coder",
+              },
+            },
+          })
+        end,
+      },
+    }
+  end,
 }
