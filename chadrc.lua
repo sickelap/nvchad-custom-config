@@ -4,22 +4,27 @@ local M = {}
 M.ui = { theme = "catppuccin" }
 M.plugins = "custom.plugins"
 M.mappings = require "custom.mappings"
+M.nvimtree = {
+  filters = {
+    dotfiles = false,
+    custom = { ".git", "node_modules", "__pycache__", "dist", ".DS_Store" },
+  },
+}
 
-vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+local api = vim.api
+
+api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
   pattern = "package.json",
   callback = function()
     vim.bo.filetype = "json.packagejson"
   end,
 })
 
--- vim.api.nvim_create_autocmd({ "BufWritePre" }, {
---   callback = function()
---     vim.lsp.buf.format()
---   end
--- })
+local comment_color = "#888888"
+local select_color = "#4f5431"
 
-vim.api.nvim_set_hl(0, "Visual", { bg = "#4c566a" })
--- vim.api.nvim_set_hl(0, "Normal", { bg = "NONE", ctermfg = "NONE" })
-vim.api.nvim_set_hl(0, "FloatBorder", { bg = "NONE", ctermfg = "NONE" })
+api.nvim_set_hl(0, "@comment", { fg = comment_color })
+api.nvim_set_hl(0, "Visual", { bg = select_color })
+api.nvim_set_hl(0, "FloatBorder", { bg = "NONE", ctermfg = "NONE" })
 
 return M
