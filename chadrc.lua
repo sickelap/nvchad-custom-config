@@ -4,12 +4,6 @@ local M = {}
 M.ui = { theme = "catppuccin" }
 M.plugins = "custom.plugins"
 M.mappings = require "custom.mappings"
-M.nvimtree = {
-  filters = {
-    dotfiles = false,
-    custom = { ".git", "node_modules", "__pycache__", "dist", ".DS_Store" },
-  },
-}
 
 local api = vim.api
 
@@ -26,5 +20,5 @@ local select_color = "#4f5431"
 api.nvim_set_hl(0, "@comment", { fg = comment_color })
 api.nvim_set_hl(0, "Visual", { bg = select_color })
 api.nvim_set_hl(0, "FloatBorder", { bg = "NONE", ctermfg = "NONE" })
-
+api.nvim_set_hl(0, "GitSignsCurrentLineBlame", { fg = "#906029" })
 return M
