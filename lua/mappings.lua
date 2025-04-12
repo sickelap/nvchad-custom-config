@@ -4,20 +4,20 @@ require "nvchad.mappings"
 
 local map = vim.keymap.set
 
-map("n", "<leader>fc",
-  function()
-    require("telescope.builtin").find_files {
-      prompt_title = "Config Files",
-      cwd = "~/.config/nvim/lua",
-      follow = true,
-    }
-  end, { desc = "Find config files" }
-)
+map("n", "<leader>fc", function()
+  require("telescope.builtin").find_files {
+    prompt_title = "Config Files",
+    cwd = "~/.config/nvim/lua",
+    follow = true,
+  }
+end, { desc = "Find config files" })
+
+map("n", "gd", "<cmd>Telescope lsp_references<cr>")
 
 map("n", "<c-h>", "<cmd>TmuxNavigateLeft<cr>")
 map("n", "<c-j>", "<cmd>TmuxNavigateDown<cr>")
-map("n", "<c-k>", "<cmd>TmuxNavigateUp<cr>" )
-map("n", "<c-l>", "<cmd>TmuxNavigateRight<cr>" )
+map("n", "<c-k>", "<cmd>TmuxNavigateUp<cr>")
+map("n", "<c-l>", "<cmd>TmuxNavigateRight<cr>")
 
 map("n", "<leader>gB", "<cmd>Git blame<cr>", { desc = "Blame buffer" })
 map("n", "<leader>gr", "<cmd>Git reset_hunk<cr>", { desc = "Reset hunk" })
