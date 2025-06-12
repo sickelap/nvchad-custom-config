@@ -1,7 +1,5 @@
 require "nvchad.mappings"
 
--- add yours here
-
 local map = vim.keymap.set
 
 map("n", "<leader>fc", function()
@@ -11,6 +9,12 @@ map("n", "<leader>fc", function()
     follow = true,
   }
 end, { desc = "Find config files" })
+
+-- for _, mode in pairs { "n", "i", "v", "x" } do
+--   for _, key in pairs { "<Left>", "<Right>", "<Up>", "<Down>" } do
+--     vim.keymap.set(mode, key, "")
+--   end
+-- end
 
 map("n", "gd", "<cmd>Telescope lsp_references<cr>")
 

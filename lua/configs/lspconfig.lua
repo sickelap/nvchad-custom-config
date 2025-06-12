@@ -11,14 +11,14 @@ local servers = {
   "docker_compose_language_service",
   "dockerls",
   "emmet_ls",
-  "html",
+  "gopls",
   "html",
   "jinja_lsp",
   "jsonls",
+  "marksman",
   "pyright",
   "terraformls",
   "ts_ls",
-  "yamlls",
 }
 
 local nvlsp = require "nvchad.configs.lspconfig"

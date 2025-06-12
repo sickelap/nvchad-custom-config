@@ -18,6 +18,9 @@ return {
       "terraform-ls",
       "typescript-language-server",
       "yaml-language-server",
+      -- "tailwind-language-server",
+      "markdown",
+
       -- "ltex-ls",
       "jinja-lsp",
 
