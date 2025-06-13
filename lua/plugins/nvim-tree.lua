@@ -1,3 +1,38 @@
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+vim.opt.termguicolors = true
+
+local function update_nvim_tree_width()
+  for _, win in ipairs(vim.api.nvim_list_wins()) do
+    local buf = vim.api.nvim_win_get_buf(win)
+    if vim.api.nvim_buf_get_option(buf, "filetype") == "NvimTree" then
+      local max_width = 0
+      local lines = vim.api.nvim_buf_get_lines(buf, 0, -1, false)
+
+      for _, line in ipairs(lines) do
+        -- Remove any ANSI codes (not usually present, but safe)
+        local plain_line = line:gsub("\27%[[%d;]*m", "")
+        local width = vim.fn.strdisplaywidth(plain_line)
+        max_width = math.max(max_width, width)
+      end
+
+      local final_width = math.max(30, math.min(50, max_width + 2)) -- Add small padding
+      vim.api.nvim_win_set_width(win, final_width)
+    end
+  end
+end
+
+-- Trigger width update on relevant events
+vim.api.nvim_create_autocmd(
+  { "BufEnter", "BufWinEnter", "CursorMoved", "TextChanged", "TextChangedI", "WinScrolled" },
+  {
+    pattern = "NvimTree_*",
+    callback = function()
+      vim.defer_fn(update_nvim_tree_width, 30)
+    end,
+  }
+)
+
 return {
   "nvim-tree/nvim-tree.lua",
   config = function()
